@@ -9,9 +9,9 @@ const createMeme = async (req, res, next) => {
 
     const meme = {};
 
-    const texts = req.body.texts || [];
+    const texts = JSON.parse(req.body.texts) || [];
     const textsArr = [].concat(texts); // Make sure texts is an array.
-    meme.texts = textsArr.map((text) => JSON.parse(text));
+    meme.texts = textsArr;
 
     // Prepare data for the new meme
     meme.id = Date.now();

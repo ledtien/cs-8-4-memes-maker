@@ -7,15 +7,6 @@ const photoHelper = require("../middleware/photos.helper");
 
 router.get("/", getAllMemes);
 
-router.post(
-  "/",
-  upload.single("image"),
-  photoHelper.resize,
-  createMeme,
-  (req, res, next) => {
-    console.log(req.file);
-    res.json({ status: "ok" });
-  }
-);
+router.post("/", upload.single("image"), photoHelper.resize, createMeme);
 
 module.exports = router;
